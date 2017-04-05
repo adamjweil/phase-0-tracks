@@ -4,7 +4,7 @@
 
 * What is version control?  Why is it useful?
 
-Git is a **version control** system that tracks changes in computer files and coordinating work on those files among multiple people. Generally used in software dev.
+Git is a **version control** system that tracks changes in computer files and coordinating work on those files among multiple people. Generally used in software development.
 
 Version control is useful because it gives systems the ability to deal with having a large number of remote repositories that they can work with, so users are able to collaborate with different groups of people in different ways simultaneously.
 
