@@ -1,5 +1,6 @@
 #contact-info {
   font-size: .8em;
+
 }
 
 section.job {
@@ -9,7 +10,15 @@ section.job {
   margin-bottom: 5px;
   padding-bottom: 1px;
   padding-left: 10px;
+
 }
 .list {
   font-size: .8em;
+}
+
+#contact-info:hover {
+  background-color: #F8F8F8;
+}
+.job li {
+  font-style: italic;
 }
