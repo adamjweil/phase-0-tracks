@@ -1,4 +1,21 @@
-.glasses {
-  background: red;
-  color: white;
+
+#octopus {
+  margin-left: 40%;
+  margin-top: 200px;
+  position: absolute;
+}
+
+#glasses {
+  z-index: 1;
+  position: absolute;
+  margin-left: 40%;
+  margin-top: 300px;
+  padding-left: 38px;
+}
+
+#hat {
+  margin-left: 38%;
+  margin-top: 130px;
+  position: absolute;
+  padding-right: 50px;
 }
