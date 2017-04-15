@@ -19,17 +19,10 @@ cite {
 
 #external-links {
   box-sizing: border-box;
-  width: 200px;
+  width: 22%;
   padding: 20px;
   border: 1px solid #ddd;
   float: left;
-  /*width: 20%;
-  position: absolute;
-  padding: 5px;
-  display: inline-block;*/
-  /*float: left;*/
-  /*max-width: 275px;*/
-  /*vertical-align: sub;*/
 }
 /* you're welcome to edit the
 image, figure, and figcaption CSS if you'd like,
@@ -55,15 +48,7 @@ main {
   position: absolute;
   float: right;
   max-width: 500px;
-  /*top:0;
-  left: 22%;
-  width: 78%;
-  padding: 5px;
-  display: block;
-  vertical-align: middle;*/
- /* float: right;*/
-  /*position: absolute;
-  max-width: 800px;*/
+
 }
 
 @media screen and (max-width: 500px) {
