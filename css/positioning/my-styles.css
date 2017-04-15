@@ -5,22 +5,22 @@
 }
 
 #octopus {
+  position: absolute;
   margin-left: 40%;
   padding-top: 60px;
-  padding-left: 10px;
-  position: absolute;
+  left: 15px;
 }
 
 #glasses {
-  z-index: 1;
   position: absolute;
   margin-left: 40%;
-  padding-top: 160px;
-  padding-left: 49px;
+  top: 160px;
+  left: 55px;
+  z-index: 1;
 }
 
 #hat {
-  z-index: 2;
   position: absolute;
   margin-left: 40%;
+  z-index: 2;
 }
