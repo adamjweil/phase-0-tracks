@@ -1,0 +1,44 @@
+-->Algorithm for Robot on Elevator<--
+  -Getting to the elevator
+    -If you are leaving from your commanders Apartment
+        -Open the door to the hallway
+        -Roll out 3 feet
+        -Turn 90 degrees left
+        -Roll 8 feet forward
+        -Turn 90 degrees right
+        -Roll 1 foot forward, and press the down button
+        -When elevator doors open, roll 4 feet forward, then turn 180 degrees around
+        -Press the lobby button
+        -When doors open at the lobby, roll 4 feet forward to exit the elevator
+    -If returning to your commanders building from the ground floor
+        -Approach main door to building facing it directly
+        -Open main door and roll 10 feet forward
+        -Turn 90 degrees right
+        -Roll 3 feet forward
+        -Press the up arrow
+        -When elevator doors open, roll 4 feet forward and then rotate 180 degrees.
+        -Press the commanders floor number (10)
+        -When doors open on 10th floor, roll out 5 feet
+        -Turn 90 degrees left, then roll 8 feet forward.
+        -Turn 90 degrees to your right, then ring commander's doorbell
+        -When commander opens door, smile at him and compliment him on how good he looks today.
+
+
+-->Algorithm for Answering Phone and Asking Who It Is<--
+  -Initialize algorithm upon feeling phone vibrate in pocket for more then 2 consecutive seconds, or upon hearing personal ring tone
+    -If phone is in pocket
+      -Reach right hand in pocket and take phone out
+      -Flip phone around until the screen is at least 90% visible
+      -Swipe the bottom of the screen (from left to right) with left pointer finger
+      -With phone in right hand, place up against right ear
+      -While speaking into the microphone, say "Hi, this is Adam. May I ask who's calling?"
+    -If personal ring-tone is heard and phone is not in pocket
+      -Walk in the direction of the sound of my personal ring-tone
+        -If the sound is getting louder, you are walking in the right direction
+        -If sound is getting softer, change course because you are going the wrong way
+      -Once the phone is visible, and within reach, use your right hand to pick up the device
+      -Flip phone around until the screen is at least 90% visible
+      -Swipe the bottom of the screen (from left to right) with left pointer finger
+      -With phone in right hand, place up against right ear
+      -While speaking into the microphone, say "Hi, this is Adam. May I ask who's calling?"
+
