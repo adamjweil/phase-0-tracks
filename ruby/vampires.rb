@@ -19,6 +19,9 @@ puts "Would you like to enroll in the company’s health insurance? "
 insurance = gets.chomp
 
 # puts "Can you please list your allergies"
+# until gets.chomp == "done" || "sunshine"
+#   input = gets.chomp
+# end
 # array = []
 # input = ' '
 # while input != 'done' || 'sunshine'
