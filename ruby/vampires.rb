@@ -19,6 +19,7 @@ puts "Would you like to enroll in the company’s health insurance? "
 insurance = gets.chomp
 
 # puts "Can you please list your allergies"
+<<<<<<< HEAD
 # until gets.chomp == "done" || "sunshine"
 #   input = gets.chomp
 # end
