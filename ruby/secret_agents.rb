@@ -1,4 +1,6 @@
-# Psuedocode "Encrypt"
+#OUR METHOD DECLATIONS
+
+# ----> Encrypt Method
 #   Input: Receive a string
 #   -Make an empty password variable
 #   -Make a counter starting at zero
@@ -10,26 +12,7 @@
 # Example input: "Abc"
 # Example output: "Bbc"
 
-
-def encrypt(string)
-  counter = 0;
-  password = "";
-  until counter == string.length
-    if string[counter] == 'z'
-      password = 'a'
-    else
-      password = string[counter].next + password
-  end
-    counter +=1;
-  end
-puts password.reverse
-end
-
-
-
-# encrypt("abc")
-
-# Decrypt Method
+# ----> Decrypt Method
   # input: recieve a string
   # make a counter starting at 0
   # define an empty variable for decrypted password
@@ -43,35 +26,62 @@ end
   # example input: "bcd"
   # example output: "abc"
 
- def decrypt(string)
-   counter = 0;
-   password = "";
-   until counter == string.length
+# Advances every letter of a string one letter forward, Encrypting it
+def encrypt(string)
+  counter = 0
+  password = ""
+
+  until counter == string.length
+      if string[counter] == 'z'
+        password = 'a'
+    else
+      password = string[counter].next + password
+      counter +=1
+      end
+    end
+password.reverse
+end
+
+
+# Reverses the method above, Decrypting a password
+ def decrypt(word)
+   counter = 0
+   password = ""
+
+   until counter == word.length
      alphabet = "abcdefghijklmnopqrstuvwxyz"
-     letter = alphabet.index(string[counter]) - 1;
-     counter += 1;
+     letter = alphabet.index(word[counter]) - 1
+     counter += 1
      password = alphabet[letter] + password
+
    end
-   puts password.reverse
+   password.reverse
  end
 
 
-# ----> TEST CASES <----
 
+#OUR DRIVER CODE
+
+# ---->(Release 3) TEST CASES <----
 # encrypt("abc")
 # encrypt("zed")
 # decrypt("bcd")
 # decrypt("afe")
-#
-# decrypt(encrypt("swordfish"))
-# decrypt("swordfish")
 
-      # ---- >INTERFACE<-----
+# ---->(Release 4) TRY A NESTED METHOD CALL <----
+puts decrypt(encrypt("swordfish"))
+# ------> Why does "decrypt(encrypt("swordfish"))" work <-----
+# Answer: This nested method works because the return value of
 
-puts "Would you like to encrypt of decrypt"
-stategy = gets.chomp
+           # ---- >INTERFACE<-----
+# asks whether they want to encrypt or decrypt a password
+puts "Would you like to encrypt or decrypt a password? (encrypt/decrypt)"
+stategy = gets.chomp.downcase
+
+# asks user for password they want encrypted or decrypted
 puts "Whats your password"
 password = gets.chomp
+
 answer = ""
 if stategy == "encrypt"
   answer = encrypt(password)
@@ -80,6 +90,9 @@ elsif stategy == "decrypt"
 else
   answer = "Invalid input"
 end
+
+# Returns encrypted / decrypted password
+puts "Returns: #{answer}"
 
 
 
