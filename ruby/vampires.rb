@@ -96,6 +96,7 @@ end
 i += 1;
 puts "Employee # #{i}: #{vampire_status}"
 
+
 end
 # puts "Name: #{name}"
 # puts "Age: #{age}"
