@@ -39,7 +39,7 @@ insurance = gets.chomp
 #   yn = array.last
 # end
 
-
+year_truth = true
 actual_year = 2017 - age
 
 case garlic
@@ -56,34 +56,38 @@ else
     insurance = false
 end
 
-case actual_year
+case year_truth
 when actual_year == year
-    actual_year = true
+    year_truth = true
 else
-    actual_year = false
+    year_truth = false
 end
 
+# case
+# when year_truth == true && (garlic == true || insurance == true)
+#   vampire_status = "Probably not a vampire"
+# when !(year_truth == true) && (garlic == false && insurance == false)
+#     vampire_status = "Almost certainly a vampire"
+# when !(year_truth == true) && (garlic == false || insurance == false)
+#   vampire_status = "Probably a vampire"
+# when (name == "Drake Cula" || name == "Tu Fang")
+#   vampire_status = "Definitely a vampire"
+# else
+#   vampire_status = "Results inconclusive"
+# end
 
-if actual_year == year && (garlic == true || insurance == true)
+if year_truth == true && (garlic == true || insurance == true)
   vampire_status = "Probably not a vampire"
-  else
-  vampire_status = "Results inconclusive."
-end
 
-if !(actual_year == year) && (garlic == false || insurance == false)
-  vampire_status = "Probably a vampire"
-  else
-  vampire_status = "Results inconclusive."
-end
-
-if !(actual_year == year) && garlic == false && insurance == false
+elsif (year_truth == false) && (garlic == false && insurance == false)
   vampire_status = "Almost certainly a vampire"
-  else
-  vampire_status = "Results inconclusive."
-end
 
-if (name == "Drake Cula" || name == "Tu Fang")
+ elsif !(year_truth == true) && (garlic == false || insurance == false)
+  vampire_status = "Probably a vampire"
+
+ elsif (name == "Drake Cula" || name == "Tu Fang")
   vampire_status = "Definitely a vampire"
+
 else
   vampire_status = "Results inconclusive."
 end
