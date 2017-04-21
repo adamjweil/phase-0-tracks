@@ -1,7 +1,9 @@
+#METHOD DECLATIONS
 puts "How many employees will be processed? "
 employee_count = gets.chomp.to_i
+i = 0;
 
-until employee_count <= 0 do
+until i == employee_count do
 
 puts "What is your name? "
 name = gets.chomp.to_s
@@ -87,9 +89,9 @@ else
 end
 
 
-puts "#{vampire_status}"
+i += 1;
+puts "Employee # #{i}: #{vampire_status}"
 
-employee_count -=1;
 end
 # puts "Name: #{name}"
 # puts "Age: #{age}"
