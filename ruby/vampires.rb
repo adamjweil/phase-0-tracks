@@ -86,6 +86,7 @@ end
 if (name == "Drake Cula" || name == "Tu Fang" || name == "tu fang" || name == "drake cula")
   vampire_status = "Definitely a vampire"
 
+
 elsif (year_truth == false) && (garlic == false && insurance == false)
   vampire_status = "Almost certainly a vampire"
 
