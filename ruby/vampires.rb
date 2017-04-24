@@ -6,7 +6,7 @@ i = 0;
 until i == employee_count do
 
 puts "What is your name? "
-name = gets.chomp.to_s
+name = gets.chomp.downcase.to_s
 
 puts "How old are you? "
 age = gets.chomp.to_i
