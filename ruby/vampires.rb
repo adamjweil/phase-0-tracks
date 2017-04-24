@@ -1,4 +1,10 @@
 #METHOD DECLATIONS
+#
+#
+#
+#
+#
+
 puts "How many employees will be processed? "
 employee_count = gets.chomp.to_i
 i = 0;
@@ -76,17 +82,18 @@ end
 #   vampire_status = "Results inconclusive"
 # end
 
-if year_truth == true && (garlic == true || insurance == true)
-  vampire_status = "Probably not a vampire"
+
+if (name == "Drake Cula" || name == "Tu Fang" || name == "tu fang" || name == "drake cula")
+  vampire_status = "Definitely a vampire"
 
 elsif (year_truth == false) && (garlic == false && insurance == false)
   vampire_status = "Almost certainly a vampire"
 
- elsif !(year_truth == true) && (garlic == false || insurance == false)
+elsif !(year_truth == true) && (garlic == false || insurance == false)
   vampire_status = "Probably a vampire"
 
- elsif (name == "Drake Cula" || name == "Tu Fang")
-  vampire_status = "Definitely a vampire"
+elsif year_truth == true && (garlic == true || insurance == true)
+  vampire_status = "Probably not a vampire"
 
 else
   vampire_status = "Results inconclusive."
