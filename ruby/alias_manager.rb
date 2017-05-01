@@ -8,25 +8,35 @@
 	# The first task this method needs to complete is swapping the first and last name (entered as the argument)
 
 
-def spy_name(str)
+# def spy_name(str)
 
-	split_name = str.split(' ')
-	reverse_name = split_name.reverse
-	spy_name = reverse_name.join(' ')
+# 	split_name = str.split(' ')
+# 	reverse_name = split_name.reverse
+# 	spy_name = reverse_name.join(' ')
 	
-	p spy_name
-end
+# 	p spy_name
+# end
 
-spy_name("Adam Weil")
+# spy_name("Adam Weil")
 
 
 def next_vowel(str)
 vowels = ["a", "e", "i", "o", "u"]
+letters = str.split('')
+i = 0
 
-# Write in code that provides the next vowel for every instance of a vowel
+			letters.map! { |letter| letter.next }
+			new_string = letters.join('')
+		
+		
+
+	p new_string
 end
 
+next_vowel("weil")
 
+
+# Write in code that provides the next vowel for every instance of a vowel
 
 # --->RELEASE # 1<----
 # -->Provide a user interface<---
