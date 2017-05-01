@@ -8,42 +8,45 @@
 	# The first task this method needs to complete is swapping the first and last name (entered as the argument)
 
 
-# def spy_name(str)
+def spy_name_map(str)
+# reverse first and last name
+	# str = str.downcase
+	split_name = str.split(' ')
+	reverse_name = split_name.reverse
+	spy_name = reverse_name.join(' ')
+	stored_names = []
 
-# 	split_name = str.split(' ')
-# 	reverse_name = split_name.reverse
-# 	spy_name = reverse_name.join(' ')
-	
-# 	p spy_name
-# end
-
-# spy_name("Adam Weil")
-
-
-def next_vowel(str)
-vowels = ["a", "e", "i", "o", "u"]
-letters = str.split('')
+letters = spy_name.split('')
 i = 0
 
-			letters.map! { |letter| letter.next }
-			new_string = letters.join('')
-		
-		
-
-	p new_string
+	letters.map! { |letter| letter.next }
+	spy_final = letters.join('')
+# if spy_final.include? '!'
+spy_final = spy_final.gsub!('!', ' ')
+	stored_names << spy_final
+	p spy_final
 end
 
-next_vowel("weil")
-
-
-# Write in code that provides the next vowel for every instance of a vowel
-
-# --->RELEASE # 1<----
-# -->Provide a user interface<---
+puts "Swapped first and last: ".upcase
+spy_name_map("Adam Weil")
+stored_names = []
+#____
+# --->RELEASE # 1 & RELEASE 2<----
+# -->Provide a user interface and storing the values<---
 # Provide a user interface that lets a user ebter a name and get a fake name back. Let the user do this
 # 	repeatedly until they decide to quit by typing 'quit'. (They might just hit Enter to continue)
-
-
-
-# ----->RELEASE # 2<------
-# --->Store the Aliases<---
+loop  do
+puts "Please enter your full name ('First Last'): "
+name = gets.chomp.to_s
+if name == 'quit'
+	swap = true
+	p "ending program"
+	
+	break if swap
+end
+	
+	x = spy_name_map(name)
+	stored_names << x
+end
+puts "Array of stored names: ".upcase
+p stored_names
