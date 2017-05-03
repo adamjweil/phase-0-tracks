@@ -4,10 +4,10 @@ class Puppy
 		puts "Initializing new puppy instance"
 	end
 
-  def fetch(toy)
-    puts "I brought back the #{toy}!"
-    toy
-  end
+ 	 def fetch(toy)
+   	 puts "I brought back the #{toy}!"
+    	toy
+	end
 
   def speak(int)
   	i = 0
@@ -61,3 +61,5 @@ pup_name.speak(num)
 # barney = Puppy.new
 # p barney.fetch('frog')
 # p barney.speak(3)
+
+adam
