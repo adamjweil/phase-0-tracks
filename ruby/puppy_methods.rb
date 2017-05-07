@@ -1,63 +1,65 @@
-# # --->Release # 0: Add Behavior to a Class<----
-# #
 class Puppy
-# (--->Release # 1: Declare an Initialize Method<---)
-# Without changing my driver code, the initialize method runs. When I created my instance of the Puppy class,
-# specifically when I assigned the variable larry = Puppy.new, the initialize method ran automatically.
-	
+
+# # (--->Release # 1: Declare an Initialize Method<---)
+# # Without changing my driver code, the initialize method runs. When I created my instance of the Puppy class,
+# # specifically when I assigned the variable larry = Puppy.new, the initialize method ran automatically.
+
 	def initialize
 		p "Initializing new puppy instance...."
 	end
 
+
  	def fetch(toy)
-   		 p "I brought back the #{toy}!"
+   		p "I brought back the #{toy}!"
     	toy
 	end
 
+
     def speak(int)
-  		i = 0
-  		string = " "
-  		out = String.new
-  			until i == int
-  				i += 1
-  				p "Woof!"
-  			end	
+  	  i = 0
+  		until i == int
+  			i += 1
+  			p "Woof!"
+  		end	
     end
+
 
     def roll_over
   		p "*rolls over*"
     end
 
+
 	def dog_years(int)
-	  	human_years = int.to_i
-	  	doggy_years = 7
-	  	age = human_years * doggy_years
+	  	human_years = int
+	  	age = human_years * 7
   		p "Doggy Years: #{age}"
     end
 
+
 	def puppy_best_friend(str)
-  		p "Puppy's Best Friend: #{str}"
+  		p "#{str} is the puppy's Best Friend"
   	end
 
 end
 
 
-# ----->Driver Code<-----
+# ----->Driver Code for Puppy Class<-----
 #
 
 larry = Puppy.new
-larry.speak(3)
+larry.speak(5)
 larry.roll_over
-larry.dog_years(3)
+larry.dog_years(6)
 larry.puppy_best_friend("Barney")
 
-#___
-# <<<<<------------------------------------------------------>>>>>
+#__
+# -------------->Creating New Class<-------------------------------------------
 class ZooTrip
 
 	def initialize
-		p "Initializing a zoo_trip instance..."
+		# p "Initializing a zoo_trip instance..."
 	end
+
 
 	def trip_time(traveltime, zootime)
 		# traveltime and zootime should are in minutes
@@ -66,78 +68,41 @@ class ZooTrip
 
 		hours = ((traveltime * 2) + zootime) / 60
 		minutes = ((traveltime * 2) + zootime) % 60
-		total_time = "#Trip time is #{hours} hours and #{minutes} min"
+		total_time = "Trip time is #{hours} hours and #{minutes} min"
 
 		p total_time
 	end
+
 
 	def trip_leader(str)
 		p "The Trip Leader today is #{str}!!"
 	end
 
 
-
 end
 
-tuesday = ZooTrip.new
-tuesday.trip_time(25, 90)
-tuesday.trip_leader("Tyler")
+# ---------->Driver Code<----------
+#
 
+zoo_array = []
+profile_trip_leaders = ["Adam", "Gary", "Tyler", "Wendy", "Nicole"]
+travel_times = [30, 60, 90]
+zoo_times = [60, 90, 120]
+i = 0
+count = 1
 
-# class Tinder
+# Loop creates 50 instances
+until i == 50
+	zoo_array << ZooTrip.new
+	i +=1	
+end
 
-# 	def initialize
-# 		p "Initializing a new tinder instance..."
-# 	end
+# The trip_time and trip_leader methods are run on each instance of the ZooTrip class
+zoo_array.each do |instance|
+ puts "Instance # #{count}"
+    instance.trip_time(travel_times.sample, zoo_times.sample)
+    instance.trip_leader(profile_trip_leaders.sample)
+  count +=1
+end
 
-# 	def physical_charic(name, gender, sexuality, age)
-# 		p "-->BASIC INFO<--"
-# 		p "Name: #{name}"
-# 		p "Gender: #{gender}"
-# 		p "Age: #{age}"
-# 		p "Sexuality: #{sexuality}"
-# 	end
-
-# 	def location_search_radious(str, num=5)
-# 		p "-->Location and Search Radius<--".upcase
-# 		p "Currently lives in #{str}, but would love to meet new people within #{num} miles.."
-# 	end
-
-# 	def fifty_instances
-# 	i = "a"
-# 	e = "a".to_s
-# 	n = 1
-# 	arr.Tinder.new = []
-# 		until n == 50 
-# 		profile = "Tinder" + n.to_s	
-# 		profile = Tinder.new
-# 		arr << profile
-# 		n += 1.to_i
-# 		end
-# 		 arr
-# 	end
-
-
-# arr.physical_charic.each [name, gender, sexuality, age] do 
-# 	arr.push
-# 	p arr
-# end
-# end
-	
-
-# John = Tinder.new
-# p John.fifty_instances
-# John.physical_charic("Adam", "Male", "Straight", 30)
-
-# def fifty_instances
-# i = a
-# until i == ax 
-# 	p Tinder.new
-# 	i = i.next
-# end
-# end
-
-# p John.fifty_instances
-
-# John.location_search_radious("New York", 15)
-
+#__
