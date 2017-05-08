@@ -1,4 +1,5 @@
 class Santa
+
 	attr_reader :age, :ethnicity
 	attr_accessor :gender
 
@@ -31,7 +32,7 @@ class Santa
 
 
 	def celebrate_birthday
-		@age = @age + 1
+		@age = age + 1
 	end
 
 
@@ -42,15 +43,16 @@ class Santa
 			@reindeer_ranking.delete(reindeer_name)
 			@reindeer_ranking.push(reindeer_name)
 		end
-			@reindeer_ranking
-	end
 
+	  @reindeer_ranking
+	end
 
 end
 
 
-# ---------->Driver Code<--------
-# 
+# ---------------->Driver Code<-------------
+# ----->Purpose: Testing Release 0-3<-------
+
 # adam = Santa.new("Male", "White")
 # adam.about
 # p "#{adam.gender}"
@@ -72,22 +74,25 @@ end
 
 #__
 
-santas = []
+# ---------------->DRIVER CODE<--------------------
+# --------->Release # 4: Program that creates as many Santas as you want!<--------
+# -->SantaCon Program
+
+# santas = []
 example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
-example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)"]
 i = 0
 count = 1
-# (rand(0..140))
 
-100.times do
-	puts "Santa # #{count}: "
-	p Santa.new(example_genders.sample, example_ethnicities.sample, (rand(0..140)))
+p "------>  SantaCon 2017!!!!!!  <-----"
+
+print "How many Santas do you think are at SantaCon this year?: "
+n = gets.chomp.to_i
+
+n.times do
+	p "Santa # #{count}: "
+	santa = Santa.new(example_genders.sample, example_ethnicities.sample, (rand(0..140)))		
+	santa.about
 	count +=1
+	p " <----------> "
 end
-
-# xample_genders.length.times do |i|
-#   santas << Santa.new(example_genders.sample, example_ethnicities.sample)
-# end
-
-
-
