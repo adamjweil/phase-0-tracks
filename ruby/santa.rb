@@ -1,105 +1,98 @@
 class Santa
 
-	def initialize(gender, ethnicity)
+	attr_reader :age, :ethnicity
+	attr_accessor :gender
 
+	def initialize(gender, ethnicity, age=0)
 		@gender = gender
 		@ethnicity = ethnicity
-		# @reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
-		@age = 0
-		
-		output = "Initializing Santa instance...."
+		@reindeer_ranking = ["Rudolph", "Dasher", "Dancer", "Prancer", "Vixen", "Comet", "Cupid", "Donner", "Blitzen"]
+		@age = age
+			p "Initializing Santa instance...."
 	end
 
 
 	def speak
-		puts "Ho, ho, ho! Haaaappy holidays!"
+		p "Ho, ho, ho! Haaaappy holidays!"
 	end
 
 
 	def eat_milk_and_cookies(cookie_type)
 		cookie_type.to_s
 		p "That was a good #{cookie_type} cookie!"
-
 	end
+
 
 	def about
-		puts "Gender: #{@gender}"
-		puts "Ethnicity: #{@ethnicity}"
-		puts "Reindeer Ranking: #{@reindeer_ranking}"
-		puts "Age: #{@age}"
+		p "Gender: #{@gender}"
+		p "Ethnicity: #{@ethnicity}"
+		p "Reindeer Ranking: #{@reindeer_ranking}"
+		p "Age: #{@age}"
 	end
+
+
+	def celebrate_birthday
+		@age = age + 1
+	end
+
+
+	def get_mad_at(reindeer_name)
+	  reindeer_name.to_s
+
+	  	if @reindeer_ranking.index(reindeer_name) != nil
+			@reindeer_ranking.delete(reindeer_name)
+			@reindeer_ranking.push(reindeer_name)
+		end
+
+	  @reindeer_ranking
+	end
+
 end
 
-arr_santa = []
-gender = ["Male", "Fema]e", "Bi-gender", "Gender-Nonconformist"]
-gender_rand = gender[rand(4)]
-# p gender_rand
-ethnicity = ["Caucasian", "Asian", "Hispnic", "Indian", "African American"]
-ethnicity_rand = ethnicity[rand(5)]
-# p ethnicity_rand
-3.times do Santa.new(gender_rand, ethnicity_rand)
-	arr_santa << Santa.new(gender_rand, ethnicity_rand)
-	puts "Creatig new #{gender_rand} #{ethnicity_rand} Santa.."
-	puts "We now have #{arr_santa.length} Santas!"
-end
 
+# ---------------->Driver Code<-------------
+# ----->Purpose: Testing Release 0-3<-------
 
-# santa_array = Array.new([])
+# adam = Santa.new("Male", "White")
+# adam.about
+# p "#{adam.gender}"
+# p adam.ethnicity
+# p "#{adam.age}"
+# adam.get_mad_at("Rudolph")
+# adam.get_mad_at("Dasher")
+# adam.gender = "Female"
+# adam.celebrate_birthday
+# # adam.ethnicity = "Black"
+# p "#{adam.gender}"
+# p adam.ethnicity
+# p "#{adam.age}"
+# adam.celebrate_birthday
+# adam.celebrate_birthday
+# adam.get_mad_at("Dancer")
+# p "#{adam.age}"
+# adam.about
 
-# gender.length.times do |i|
-#   arr_santa << Santa.new(gender[i], ethnicity[i])
-#   p arr_santa
-# end
-# p arr_santa
-# end
+#__
 
-# arr_santa = []
-# gender = ["Male", "Fema]e", "Bi-gender", "Gender-Nonconformist"]
-# ethnicity = ["Caucasian", "Asian", "Hispnic", "Indian", "African American"]
-# santa_array = Array.new([])
-
-# gender.length.times do |i|
-#   arr_santa << Santa.new(gender[i], ethnicity[i])
-# end
-
-# p arr_santa
-
-
-# ex_genders.length.times do |i|
-# 	santas.push(Santa.new(gender[rand(4)], ethnicity[rand(5)]) 
-# 	p santas
-
-
-# while i < 10
-# 	random_gender = ex_genders[rand(ex_genders.length)].to_s
-# 	random_ethnicity = ex_ethnicities[rand(ex_ethnicities.length)].to_s
-# 	santas << Santa.new(random_gender, random_ethnicity)
-
-# 	i += 1
-# end
-# p santas[]
-# end
-
-
+# ---------------->DRIVER CODE<--------------------
+# --------->Release # 4: Program that creates as many Santas as you want!<--------
+# -->SantaCon Program
 
 # santas = []
-# santas << Santa.new("agender", "black")
-# santas << Santa.new("female", "Latino")
-# santas << Santa.new("bigender", "white")
-# santas << Santa.new("male", "Japanese")
-# santas << Santa.new("female", "prefer not to say")
-# santas << Santa.new("gender fluid", "Mystical Creature (unicorn)")
-# santas << Santa.new("N/A", "N/A")
-# santas
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)"]
+i = 0
+count = 1
 
-# holiday_hero = Santa.new("Male", "Caucasian")
-# # prints out "Initializing Santa instance..."
+p "------>  SantaCon 2017!!!!!!  <-----"
 
-# holiday_hero.speak
-# # prints out "Ho, ho, ho! Haappy holidays!"
+print "How many Santas do you think are at SantaCon this year?: "
+n = gets.chomp.to_i
 
-# holiday_hero.eat_milk_and_cookies("Snickerdoodle")
-# # prints out "That was a good Chocolate Chip cookie!"
-
-# holiday_hero.about
-
+n.times do
+	p "Santa # #{count}: "
+	santa = Santa.new(example_genders.sample, example_ethnicities.sample, (rand(0..140)))		
+	santa.about
+	count +=1
+	p " <----------> "
+end
