@@ -21,8 +21,8 @@ end
 
 # ------>DRIVER CODE<-------
 # --->Release: 2<-----------
-# p Shout.yelling_happily("yayyyy")
-# p Shout.yell_angrily("boo hoo")
+p Shout.yelling_happily("yayyyy")
+p Shout.yell_angrily("boo hoo")
 
 #__
 
