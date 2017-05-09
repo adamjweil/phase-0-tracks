@@ -45,3 +45,26 @@ end
 # p x.secret_word
 # p x.guess_count
 # p x.get_placeholder
+
+# ----->DRIVER CODE<-----
+puts "Ready to play some Hangman?????......Well you're playing either way!!"
+puts ". "
+puts ". "
+puts ". "
+puts ". "
+puts ". "
+puts "Okay, so player # 1, please enter the word that you would like your partner to try and guess:  "
+instance = gets.chomp.to_s
+x = Hangman.new(instance)
+
+guess_num = x.guess_count
+place_holder = x.get_placeholder
+
+puts "Player # 1, you're work is done, please have player # 2 get onto the computer to start guessing!!"
+puts ". "
+puts ". "
+puts "Player # 2..... Welcome!!"
+puts "You are going to have: "
+puts "#{guess_num} chances"
+puts "To figure out what word belongs below: "
+puts "#{place_holder}"
