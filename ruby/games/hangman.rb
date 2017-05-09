@@ -16,30 +16,59 @@
 # 	      Create a setter methodf that will loop thru each character and change the chage "_" to the letter that was inputted in the guess method that secret_word contains
 
 class Hangman
+	attr_reader :secret_word, :guesses, :progress, :tries
+	attr_writer :guesses, :progress, :tries
 
 	def initialize(secret_word)
 		secret_word.to_s
-		@secret_word = secret_word
+		@secret_word = secret_word.split(//)
 		@guesses = secret_word.length
-		@placeholder = "_"
-		@guesses.times do 
-			@placeholder = @placeholder + "_"
-		end
+		@tries = 0
+		@progress = ["_" * secret_word.length]
 	end
 
 	def secret_word
-		p @secret_word
+		@secret_word
 	end
 
 	def guess_count
-		p @guesses
+		@guesses
 	end
 
-	def get_placeholder
-		@placeholder
+	def progress
+		["_" * secret_word.length]
 	end
+
+	def check_print(letters, guessed)
+		won = true
+
+		letters.each do |n|
+			if guessed.include? n
+				print n
+			else
+				print '_'
+				won = false
+			end
+		end
+	   return won
+	end
+
 
 end
+
+def check_print(letters, guessed)
+		won = true
+
+		letters.each do |n|
+			if guessed.include? n
+				print n
+			else
+				print '_'
+				won = false
+			end
+		end
+	   return won
+	end
 
 # x = HangMan.new("balls")
 # p x.secret_word
@@ -54,22 +83,55 @@ puts ". "
 puts ". "
 puts ". "
 puts "Okay, so player # 1, please enter the word that you would like your partner to try and guess:  "
-instance = gets.chomp.to_s
-x = Hangman.new(instance)
-
-guess_num = x.guess_count
-place_holder = x.get_placeholder
+# instance = gets.chomp.to_s
+word = Hangman.new(gets.chomp.to_s)
+progress = word.progress
+guess_count = word.guess_count
+secret_word = word.secret_word
+tries = 0
+guessed = []
 
 puts "Player # 1, you're work is done, please have player # 2 get onto the computer to start guessing!!"
 puts ". "
 puts ". "
 puts "Player # 2..... Welcome!!"
 puts "You are going to have: "
-puts "#{guess_num} chances"
-puts "To figure out what word belongs below: "
+puts "#{word.guess_count} chances to figure out what word belongs below: "
+puts ""
 puts ". "
 puts ". "
-puts "#{place_holder}"
-
+puts "      #{word.progress}"
+puts ". "
 puts "It's time to start guessing!!"
-puts "Please only enter 1 letter per guess"
+puts "Please only enter 1 letter per guess, #{word.guess_count} guesses remaining: "
+
+while tries < word.guess_count
+	letter = gets.chomp
+	if secret_word.include? letter
+		ind = secret_word.index(letter)
+		progress.insert(ind, letter)
+		progress.delete("_")
+		secret_word.delete(letter)
+		puts "You guessed one letter!"
+		guessed << letter
+		won = check_print(secret_word, guessed)
+
+		if won
+			puts "You won!! "
+			break
+		end
+
+	else
+		puts "Nope, sorryt. "
+		tries += 1
+		puts "You have " + (guess_count - tries).to_s + " left"
+	end
+end
+
+
+
+
+
+
+
+
