@@ -55,7 +55,7 @@ function randomNum(){
 function randString(length) {
 	var l = length > 20 ? 20 : length
 	var str = Math.random().toString()
-
+	console.log(str);
 }
 
 function makeString(int) {
@@ -69,24 +69,11 @@ function makeString(int) {
 		len = Math.floor(((Math.random()+1)*10)-9);
 		arrayOfLengths.push(len);
 
-		// return arrayOfLengths;
-	
-		for (var n = 0; n < len; n++) {
-
-			randWord += letters.charAt(Math.floor(((Math.random()+1)*10)-9) * letters.length);
-			// arrayOfStrings[n] = randWord;
-
-			// arrayOfStrings.push(randWord);
-
-			// return arrayOfStrings;
-		}
-
-		arrayOfStrings[i] = randWord
 	}
 
+	// Another for loop?
 
-		console.log(arrayOfStrings);
-	
+		console.log(arrayOfLengths);
 }
 
 
@@ -115,8 +102,9 @@ console.log("");
 
 console.log("Release: 2");
 makeString(5);
-makeString(1);
-makeString(19);
+// makeString(1);
+// makeString(19);
+// randString(5);
 
 
 
