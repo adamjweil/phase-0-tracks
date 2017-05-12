@@ -43,6 +43,59 @@ function randomTestData(int){
 
 }
 
+function randomNum(){
+	x = Math.floor(((Math.random() + 1) * 10) - 9);
+	console.log(x);
+}
+// function randomNum(){
+// 	x = Math.floor(((Math.random() + 1) * 10) - 9);
+// 	console.log(x);
+// }
+
+function randString(length) {
+	var l = length > 20 ? 20 : length
+	var str = Math.random().toString()
+
+}
+
+function makeString(int) {
+
+	var randWord = "";
+	var letters = "abcdefghijklmnopqrstuvwxyz";
+	var arrayOfStrings = [];
+	var arrayOfLengths = [];
+
+	for (var i = 0; i < int ; i++ ) {
+		len = Math.floor(((Math.random()+1)*10)-9);
+		arrayOfLengths.push(len);
+
+		// return arrayOfLengths;
+	
+		for (var n = 0; n < len; n++) {
+
+			randWord += letters.charAt(Math.floor(((Math.random()+1)*10)-9) * letters.length);
+			// arrayOfStrings[n] = randWord;
+
+			// arrayOfStrings.push(randWord);
+
+			// return arrayOfStrings;
+		}
+
+		arrayOfStrings[i] = randWord
+	}
+
+
+		console.log(arrayOfStrings);
+	
+}
+
+
+
+	// console.log(arrayOfLengths);
+
+	// console.log(arrayOfStrings);
+
+
 // ----->DRIVER CODE<------
 console.log("Release: 0");
 longestString(["long phrase", "longer phrase", "longest phrase"]);
@@ -61,6 +114,11 @@ objectMatch({state: "Maine", pop: 1899777}, {state: "Maryland", pop: 1899777});
 console.log("");
 
 console.log("Release: 2");
+makeString(5);
+makeString(1);
+makeString(19);
+
+
 
 
 
