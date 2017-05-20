@@ -1,0 +1,187 @@
+RELEASE 2: Execute SQL Queries
+
+1. Display the information in one table (either table is fine).
+  
+    Goal: Display contents of parties table
+	(QUERY) --> sqlite> SELECT * FROM parties;
+		1|Federalist
+		2|Democratic-Republican
+		3|Democrat
+		4|Republican
+		5|Whig
+		6|National Union
+
+2. Update an item that meets some condition (you can choose a condition that makes sense).
+   
+   Goal: Update 'Democratic-Rebublican' party to 'Democratic-Republican (formally)' party, since they don't exist anymore
+	(QUERY) --> sqlite> UPDATE parties SET party="Democratic-Republican (formerly)" WHERE id=2;
+		*** This Query does not produce any output. It just deletes what I am specifying. To check my work, I used the Query below:
+
+		(CHECK UPDATED) --> sqlite> SELECT * FROM parties;
+			1|Federalist
+			2|Democratic-Republican (formerly)
+			3|Democrat
+			4|Republican
+			5|Whig
+			6|National Union
+
+3. Display the information in both tables using one query.
+	
+	(QUERY) --> sqlite> SELECT * FROM presidents, parties WHERE presidents.party_id = parties.id;
+		1|George Washington|1789|1797|1|TRUE|1|Federalist
+		2|John Adams|1797|1801|1|TRUE|1|Federalist
+		3|Thomas Jefferson|1801|1809|2|TRUE|2|Democratic-Republican (formerly)
+		4|James Madison|1809|1817|2|TRUE|2|Democratic-Republican (formerly)
+		5|James Monroe|1817|1825|2|FALSE|2|Democratic-Republican (formerly)
+		6|John Quincy Adams|1825|1829|2|TRUE|2|Democratic-Republican (formerly)
+		7|Andrew Jackson|1829|1837|3|TRUE|3|Democrat
+		8|Martin van Buren|1837|1841|3|TRUE|3|Democrat
+		9|William Harrison|1841|1841|5|FALSE|5|Whig
+		10|John Tyler|1841|1845|5|FALSE|5|Whig
+		11|James K. Polk|1845|1849|3|FALSE|3|Democrat
+		12|Zackary Taylor|1849|1850|5|FALSE|5|Whig
+		13|Millard Fillmore|1850|1853|5|FALSE|5|Whig
+		14|Franklin Pierce|1853|1857|3|FALE|3|Democrat
+		15|James Buchanan|1857|1861|3|TRUE|3|Democrat
+		16|Abraham Lincoln|1861|1865|4|TRUE|4|Republican
+		17|Andrew Johnson|1865|1869|6|TRUE|6|National Union
+		18|Ulysses S. Grant|1869|1877|4|TRUE|4|Republican
+
+4. Display a narrower selection of columns (fewer columns than all of them, in other words) from both tables using one query.
+    
+     Goal: Run a query that only selects the names from the presidents table and the corresponding party name from the party table
+	(QUERY) --> sqlite> SELECT presidents.name, parties.party FROM presidents JOIN parties ON presidents.party_id = parties.id;
+		George Washington|Federalist
+		John Adams|Federalist
+		Thomas Jefferson|Democratic-Republican (formerly)
+		James Madison|Democratic-Republican (formerly)
+		James Monroe|Democratic-Republican (formerly)
+		John Quincy Adams|Democratic-Republican (formerly)
+		Andrew Jackson|Democrat
+		Martin van Buren|Democrat
+		William Harrison|Whig
+		John Tyler|Whig
+		James K. Polk|Democrat
+		Zackary Taylor|Whig
+		Millard Fillmore|Whig
+		Franklin Pierce|Democrat
+		James Buchanan|Democrat
+		Abraham Lincoln|Republican
+		Andrew Johnson|National Union
+		Ulysses S. Grant|Republican
+
+5. Delete an item that meets some condition (you can choose a condition that makes sense).
+    
+      Goal: Want to delete any presidents that were members of the National Union party, because who knows what that party is anyway...
+	(QUERY) sqlite> DELETE FROM presidents WHERE party_id=6;
+		***This Query does not produce any output. It just deletes what I am specifying. To check my work, I used the Query below:
+
+		(CHECK UPDATED) --> sqlite> SELECT * FROM presidents;
+			1|George Washington|1789|1797|1|TRUE
+			2|John Adams|1797|1801|1|TRUE
+			3|Thomas Jefferson|1801|1809|2|TRUE
+			4|James Madison|1809|1817|2|TRUE
+			5|James Monroe|1817|1825|2|FALSE
+			6|John Quincy Adams|1825|1829|2|TRUE
+			7|Andrew Jackson|1829|1837|3|TRUE
+			8|Martin van Buren|1837|1841|3|TRUE
+			9|William Harrison|1841|1841|5|FALSE
+			10|John Tyler|1841|1845|5|FALSE
+			11|James K. Polk|1845|1849|3|FALSE
+			12|Zackary Taylor|1849|1850|5|FALSE
+			13|Millard Fillmore|1850|1853|5|FALSE
+			14|Franklin Pierce|1853|1857|3|FALE
+			15|James Buchanan|1857|1861|3|TRUE
+			16|Abraham Lincoln|1861|1865|4|TRUE
+			18|Ulysses S. Grant|1869|1877|4|TRUE
+
+--------------------------------
+
+RELEASE 3: Research on Your Own
+
+1. There are lots of different kinds of joins. What are they? Can you apply different conditions to a join to change what's displayed? Can you bookmark any good diagrams that will help you tell different joins apart in the future?
+	1.  CROSS JOIN
+	2.  INNER JOIN  --> Is the most common type of join and is the default type of join. You can use the INNER keyword 			         optionally
+	3.  OUTER JOIN  --> SQLite only supports the LEFT OUTER JOIN
+		--> If you have more than 1 condistion, you can use USING.. (conditions), instead of using ON ..condition
+
+     Good Bookmarks for visulizing the different types of JOIN:
+	  1.  http://sql-joins.leopard.in.ua/
+	  2.  https://blog.jooq.org/2015/10/06/you-probably-dont-use-sql-intersect-or-except-often-enough/
+
+2.  Try a few different joins in your database, and record the commands and the output in queries.txt.
+    
+-    Goal: Let's show all of the presidents who have the party_id = 3 (democrats), but instead of showing party_id, show the name 
+     of party
+	(QUERY) -- >sqlite> SELECT presidents.name, presidents.memorable_name, parties.party FROM presidents JOIN parties 		ON presidents.party_id = parties.id WHERE party_id=3;
+	(OUTPUT)
+		Andrew Jackson|TRUE|Democrat
+		Martin van Buren|TRUE|Democrat
+		James K. Polk|FALSE|Democrat
+		Franklin Pierce|FALE|Democrat
+		James Buchanan|TRUE|Democrat
+
+-   Goal: Let's show all of the presidents who have the party_id = 4 (republican), but instead of showing party_id, show the name 
+    of party
+	(QUERY) --> sqlite> SELECT presidents.name, presidents.memorable_name, parties.party FROM presidents JOIN parties 		ON presidents.party_id = parties.id WHERE party_id=4;
+	(OUTPUT)
+		Abraham Lincoln|TRUE|Republican
+		Ulysses S. Grant|TRUE|Republican
+
+-   Goal: Try using a LEFT OUTER JOIN to show name, term_end_yr, and the name of party
+	(QUERY) sqlite> SELECT name, term_end_yr, party FROM presidents LEFT OUTER JOIN parties ON presidents.party_id = 	         parties.id;
+	(OUTPUT)
+		George Washington|1797|Federalist
+		John Adams|1801|Federalist
+		Thomas Jefferson|1809|Democratic-Republican (formerly)
+		James Madison|1817|Democratic-Republican (formerly)
+		James Monroe|1825|Democratic-Republican (formerly)
+		John Quincy Adams|1829|Democratic-Republican (formerly)
+		Andrew Jackson|1837|Democrat
+		Martin van Buren|1841|Democrat
+		William Harrison|1841|Whig
+		John Tyler|1845|Whig
+		James K. Polk|1849|Democrat
+		Zackary Taylor|1850|Whig
+		Millard Fillmore|1853|Whig
+		Franklin Pierce|1857|Democrat
+		James Buchanan|1861|Democrat
+		Abraham Lincoln|1865|Republican
+		Ulysses S. Grant|1877|Republican
+
+-   Goal: Let's run a query that selects all of the presidents, whether they were memorable, and the name that corresponds to their
+    party_id
+	(QEURY) --> sqlite> SELECT presidents.name, presidents.memorable_name, parties.party FROM presidents JOIN parties 		ON presidents.party_id = parties.id;
+	(OUTPUT)
+		George Washington|TRUE|Federalist
+		John Adams|TRUE|Federalist
+		Thomas Jefferson|TRUE|Democratic-Republican (formerly)
+		James Madison|TRUE|Democratic-Republican (formerly)
+		James Monroe|FALSE|Democratic-Republican (formerly)
+		John Quincy Adams|TRUE|Democratic-Republican (formerly)
+		Andrew Jackson|TRUE|Democrat
+		Martin van Buren|TRUE|Democrat
+		William Harrison|FALSE|Whig
+		John Tyler|FALSE|Whig
+		James K. Polk|FALSE|Democrat
+		Zackary Taylor|FALSE|Whig
+		Millard Fillmore|FALSE|Whig
+		Franklin Pierce|FALE|Democrat
+		James Buchanan|TRUE|Democrat
+		Abraham Lincoln|TRUE|Republican
+		Ulysses S. Grant|TRUE|Republican
+
+-    Goal: Let's try a query that only selects and displays the presidents who have a memerable_name ="TRUE", from the above
+     population.
+	(QUERY) --> sqlite> SELECT presidents.name, presidents.memorable_name, parties.party FROM presidents JOIN parties 		ON presidents.party_id = parties.id WHERE memorable_name="TRUE";
+	(OUTPUT:)
+		George Washington|TRUE|Federalist
+		John Adams|TRUE|Federalist
+		Thomas Jefferson|TRUE|Democratic-Republican (formerly)
+		James Madison|TRUE|Democratic-Republican (formerly)
+		John Quincy Adams|TRUE|Democratic-Republican (formerly)
+		Andrew Jackson|TRUE|Democrat
+		Martin van Buren|TRUE|Democrat
+		James Buchanan|TRUE|Democrat
+		Abraham Lincoln|TRUE|Republican
+		Ulysses S. Grant|TRUE|Republican
