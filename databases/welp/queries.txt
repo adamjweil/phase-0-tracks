@@ -1,0 +1,45 @@
+Release #2: View a Many-to-Many Relationship
+
+2. You've joined two tables before. How do you join three?
+
+	(QUERY) ---> SELECT * FROM reviews LEFT JOIN businesses ON reviews.business_id = businesses.id LEFT JOIN users ON reviews.user_id = users.id;
+	(OUTPUT)
+		1|3|The casino is so-so, drinks are good, but not too many games|5|4|5|Cal's Casino|4|Matt|James
+		2|5|This is the best pizza in the world! Wouldn't go anywhere else!!!|2|1|2|Bill's Pizza|1|Adam|Weil
+		3|4|I've had a lot of BBQ, and this is definitely better than most|4|2|4|Bonnie's BBQ|2|Nicole|Murakami
+		4|1|TERRIBLE SERVICE! NOT COMMING BACK!|3|5|3|Teddy's Tennis Courts|5|Tom|Barron
+		5|5|BEST Ice Cream EVERRRRRR|1|1|1|Polly's Ice Cream|1|Adam|Weil
+
+
+3. There are some repetitive columns if we choose to view all fields. Choose instead to just view the user's names, the business name, the star rating, and the comment.
+
+	(QUERY) -- >  SELECT users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN businesses ON reviews.business_id = businesses.id LEFT JOIN users ON reviews.user_id = users.id;
+	(OUTPUT)
+		Matt|James|Cal's Casino|3|The casino is so-so, drinks are good, but not too many games
+		Adam|Weil|Bill's Pizza|5|This is the best pizza in the world! Wouldn't go anywhere else!!!
+		Nicole|Murakami|Bonnie's BBQ|4|I've had a lot of BBQ, and this is definitely better than most
+		Tom|Barron|Teddy's Tennis Courts|1|TERRIBLE SERVICE! NOT COMMING BACK!
+		Adam|Weil|Polly's Ice Cream|5|BEST Ice Cream EVERRRRRR
+
+	(ORGANIZED VERSION of ^^ QUERY)  --->  SELECT reviews.id, users.first_name, users.last_name, businesses.name, reviews.stars, reviews.comment FROM reviews JOIN businesses ON reviews.business_id = businesses.id LEFT JOIN users ON reviews.user_id = users.id;
+	(OUTPUT)
+		1|Matt|James|Cal's Casino|3|The casino is so-so, drinks are good, but not too many games
+		2|Adam|Weil|Bill's Pizza|5|This is the best pizza in the world! Wouldn't go anywhere else!!!
+		3|Nicole|Murakami|Bonnie's BBQ|4|I've had a lot of BBQ, and this is definitely better than most
+		4|Tom|Barron|Teddy's Tennis Courts|1|TERRIBLE SERVICE! NOT COMMING BACK!
+		5|Adam|Weil|Polly's Ice Cream|5|BEST Ice Cream EVERRRRRR
+
+
+4. How do you view the data of all three tables for just one particular business? 
+	To select data from all three tables for one particular business, you would need to add a 'WHERE business_id = x' piece of syntax at the end. For example, to see all of the reviews on Polly's Ice Cream:
+
+	(QUERY) --> SELECT * FROM reviews LEFT JOIN businesses ON reviews.business_id = businesses.id LEFT JOIN users ON reviews.user_id = users.id WHERE business_id = 1;
+	(OUTPUT)
+		5|5|BEST Ice Cream EVERRRRRR|1|1|1|Polly's Ice Cream|1|Adam|Weil
+
+	If you wanted to see everything on Bonnie's BQQ:
+
+	(QUERY) --> SELECT * FROM reviews LEFT JOIN businesses ON reviews.business_id = businesses.id LEFT JOIN users ON reviews.user_id = users.id WHERE business_id = 4;
+	(OUTPUT)
+		3|4|I've had a lot of BBQ, and this is definitely better than most|4|2|4|Bonnie's BBQ|2|Nicole|Murakami
+
