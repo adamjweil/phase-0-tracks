@@ -12,23 +12,23 @@
 
 # Your answers to these questions will have a huge impact on your success, and today is your first official opportunity to practice.
 require 'sqlite3'
-require 'faker'
+# require 'faker'
 
 
 db = SQLite3::Database.new("RubySQL.db")
 
-create_table_cmd = <<-SQL
-	CREATE TABLE IF NOT EXISTS customers (
-		id INTEGER PRIMARY KEY,
-		name VARCHAR(255),
-		phone_number INTEGER,
-		email VARCHAR(255),
-		address VARCHAR(255),
-		mailing_list BOOLEAN
-	)
-SQL
+# create_table_cmd = <<-SQL
+# 	CREATE TABLE IF NOT EXISTS customers (
+# 		id INTEGER PRIMARY KEY,
+# 		name VARCHAR(255),
+# 		phone_number INTEGER,
+# 		email VARCHAR(255),
+# 		address VARCHAR(255),
+# 		mailing_list BOOLEAN
+# 	)
+# SQL
 
-db.execute(create_table_cmd)
+# db.execute(create_table_cmd)
 
 
 # def check_num(number)
