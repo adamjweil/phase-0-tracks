@@ -14,27 +14,35 @@
 require 'sqlite3'
 
 db = SQLite3::Database.open "RubySQL.db"	
+# SQLite3::ResultSet::ArrayWithTypes
 
-def check_num(number)
+def check_num(int)
 	db = SQLite3::Database.open "RubySQL.db"	
-		number = number
-		x = db.execute("SELECT * FROM customers WHERE phone_number = #{number}")
-		len = x.length
-			if len != 0
-				nam = db.execute("SELECT name FROM customers WHERE phone_number = #{num}")
-				address = db.execute("SELECT street_address FROM customers WHERE phone_number = #{num}")
+	num = int		
+	number = db.execute("SELECT name FROM customers WHERE phone_number = #{num}")
+	address = db.execute("SELECT street_address FROM customers WHERE phone_number = #{num}")
 		
-				p "Welcome Back  #{nam}!! "
-				p "Your address is listed as #{address} "
-			else
-				puts "Incorrect number"
-				puts "."
-				puts "."
-				puts "."
-				puts "Not found in our database...."
-			end
-		
+	p "Welcome Back  #{number}!! "
+	p "Your address is listed as #{address} "
 end
+
+def display_menu
+	db = SQLite3::Database.open "RubySQL.db"	
+	lunch = db.execute("SELECT * FROM lunches")
+
+	lunch.each_with_index do |x|
+		p x
+	end
+end
+
+	# puts "1. Chicken Salad"
+	# puts "2. Grilled Cheese"
+	# puts "3. Chipotle Burito"
+	# puts "4. Tacoooos"
+	# puts "5. Sushi"
+
+
+
 
 def new_cust(str, num, email, address)
 	db = SQLite3::Database.open "RubySQL.db" 
@@ -74,28 +82,26 @@ end
 
 # -------
 # ---------------------------------DRIVER CODE-------------------------
-# db = SQLite3::Database.open("RubySQL.db") 
-# db.execute(add_customer)
-member = false
+db = SQLite3::Database.open("RubySQL.db") 
 
 puts "------->Welcome to Adam's Bakery on Wheels!!!!"
 puts "......Scooter Wheels, that is...."
 puts ''
-
-# puts " To place an order, your customer information needs to be in our database"
-# puts " This is only to keep things running smoothly!!!! "
-# puts " NOT STEALING DATA.......promise!!!"
-# Checking whether they are in Database already
 puts ""
+
+# Checking whether they are in Database already
 puts "Are you a returning customer? If so, please enter your phone number (no spaces). If not, type \"new customer\""
-print ":>> Number: "
-num = gets.chomp
+puts ":>> Number: "	
 
-	if num != "new customer"
-		check_num(num)
-	else
-
-	end
+check_num(gets.chomp)
+puts "."
+puts "."
+puts "."
+puts "."
+puts "."
+puts "."
+puts "--------->Lunch Menu<-----------"
+display_menu
 
 
 # print ">> Please enter your phone number (no spaces): "
