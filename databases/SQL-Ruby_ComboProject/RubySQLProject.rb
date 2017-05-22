@@ -9,7 +9,7 @@ db = SQLite3::Database.open "RubySQL.db"
 def validate_num
     db = SQLite3::Database.open "RubySQL.db"	
 
-    print ": >> Enter Phone Number: "
+    print ": >> Enter Phone Number (no spaces): "
     num = gets.chomp.to_i
 
     name = db.execute("SELECT name FROM customers WHERE phone_number = #{num}")
@@ -18,7 +18,7 @@ def validate_num
 	
 	if name.length > 0 && street_address != 'nil'
 		p "."
-		p "Roladex Info:"
+		p "Rolodex Info:"
 		p ": >> Name: #{name} "
 		p ": >> Email Address: #{email} "
 		p ": >> Street Address: #{street_address} "
@@ -29,7 +29,7 @@ def validate_num
 end
 
 
-def roladex_add
+def rolodex_add
     db = SQLite3::Database.open "RubySQL.db" 
 
 	print ": >> Full Name (First and Last): "
@@ -52,12 +52,12 @@ end
 # -------
 db = SQLite3::Database.open("RubySQL.db") 
 
-puts "------->Welcome to Adam's Roladex!!!!"
-puts "Database Roladex....that is........"
+puts "------->Welcome to Adam's Rolodex!!!!"
+puts "Database Rolodex....that is........"
 puts ''
 puts ""
 
-puts "Are you in my Roladex? (yes/no) "
+puts "Are you in my Rolodex? (yes/no) "
 answer = gets.chomp.to_s
 
 	if answer == "yes"
@@ -66,10 +66,10 @@ answer = gets.chomp.to_s
 		validate_num
 
 	elsif answer == "no"
-		puts "Do you want to be in my Roladex? "
+		puts "Do you want to be in my Roladex? (yes/no) "
 		intent = gets.chomp.to_s
 			if intent == "yes"
-				roladex_add
+				rolodex_add
 				puts "Thanks for entering your info!! "
 				puts "."
 				puts "Let's check to make sure your info is stored: "
@@ -80,5 +80,4 @@ answer = gets.chomp.to_s
 			
 	else
 		p "Incorrect input!!  "
-
 end
