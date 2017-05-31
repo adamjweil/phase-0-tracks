@@ -1,4 +1,4 @@
-require_relative 'to_roman'
+require_relative 'roman_numerals'
 
 	describe 'Converting Integers to Roman' do
 	it "converts 1 to I" do
