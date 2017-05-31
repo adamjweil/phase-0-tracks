@@ -16,7 +16,7 @@ def to_roman(num)
 		roman_numeral += roman_num * (num / arabiac_num)
 		num = num % arabiac_num
 	end
-	roman_numeral
+	p roman_numeral
 end
 
 
